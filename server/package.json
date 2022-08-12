@@ -1,0 +1,19 @@
+{
+  "name": "pizza-shop-management-system",
+  "version": "1.0.0",
+  "description": "this is the backend part of pizza shop",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "muhammad hamza",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0"
+  }
+}
