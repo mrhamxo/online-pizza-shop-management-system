@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap';
 
 const About = () => {
   return (
-    <div>
+    <>
         <Container style={{marginTop: "50px"}}>
             <h1>Who we are</h1>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia nihil modi ut exercitationem, sequi minima labore iusto dolorem. Ad officia sunt repellendus sint repellat! Pariatur, amet laborum. Quisquam, deserunt eveniet.Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia nihil modi ut exercitationem, sequi minima labore iusto dolorem. Ad officia sunt repellendus sint repellat! Pariatur, amet laborum. Quisquam, deserunt eveniet.</p>
@@ -33,7 +33,7 @@ const About = () => {
             </Row>
 
         </Container>
-    </div>
+    </>
   )
 }
 

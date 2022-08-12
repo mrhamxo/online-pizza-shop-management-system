@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const Policy = () => {
   return (
-    <div>
+    <>
       <Container style={{ marginTop: "50px" }}>
         <h1>Term and Policy</h1>
         <Row>
@@ -92,7 +92,7 @@ const Policy = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 };
 

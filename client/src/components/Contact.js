@@ -6,7 +6,7 @@ import { AiOutlineHome } from "react-icons/ai";
 
 const Contact = () => {
   return (
-    <div>
+    <>
       <Container style={{ marginTop: "50px"}}>
         <Row style={{justifyContent: "center"}}>
           <Col md={7}>
@@ -58,7 +58,7 @@ const Contact = () => {
           </Col>
         </Row>
       </Container>
-    </div>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import Contact from './components/Contact';
 import NavBar from './components/NavBar';
 import Policy from './components/Policy';
 import TopBar from './components/TopBar';
+import HomeScreen from './screens/HomeScreen';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/policy' element={<Policy />} />
+        <Route path='/' element={<HomeScreen />} />
       </Routes>
     </BrowserRouter>
   );

@@ -5,29 +5,29 @@ import { MdLocalOffer } from "react-icons/md";
 
 const TopBar = () => {
   return (
-    <div>
+    <>
       <Navbar bg="dark" variant="dark" expand="lg">
         <Container fluid>
             <h6 className="text-light">
               <MdLocalOffer className="text-warning"/> &nbsp; &nbsp;
               Free Home Delivery On Order!</h6>
             <Nav className="ms-auto">
-              <LinkContainer to="/" activeClassName>
+              <LinkContainer to="/" className='hover'>
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/about" activeClassName>
+              <LinkContainer to="/about" className='hover'>
                 <Nav.Link>About Us</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/contact" activeClassName>
+              <LinkContainer to="/contact" className='hover'>
                 <Nav.Link>Contact Us</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/policy" activeClassName>
+              <LinkContainer to="/policy" className='hover'>
                 <Nav.Link>Term and Policy</Nav.Link>
               </LinkContainer>
             </Nav>
         </Container>
       </Navbar>
-    </div>
+    </>
   );
 };
 
