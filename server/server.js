@@ -1,8 +1,16 @@
 const express = require('express');
+const dotenv = require('dotenv');
+const connectDB = require('./config/databaseConnection');
 require('colors');
 const morgan = require('morgan');
 
 const app = express();
+
+// config dotenv
+dotenv.config();
+
+// mongoDB connection
+connectDB();
 
 // middlewares
 app.use(express.json());
@@ -13,6 +21,8 @@ app.get('/', (req, res) => {
     res.send('Hello World from node server');
 });
 
-app.listen(3000, () => {
-    console.log(`Server on port http://localhost:${3000}`.yellow);
+// start server
+const port = process.env.PORT;
+app.listen(port, () => {
+    console.log(`Server running on ${process.env.NODE_ENV} mode on port on ${process.env.PORT}`.bgMagenta.white);
 });
