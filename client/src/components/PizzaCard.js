@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Button, Card, Col, Modal, Row } from "react-bootstrap";
+import { cartAction } from "../actions/cartAction";
 
 const PizzaCard = ({ pizza }) => {
-  const [variant, setVariant] = useState("small");
+  const [varient, setVarient] = useState("small");
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
+    dispatch(cartAction(pizza, quantity, varient));
+  };
 
   const [show, setShow] = useState(false);
 
@@ -27,11 +34,11 @@ const PizzaCard = ({ pizza }) => {
                 <h5>Variants</h5>
                 <select
                   className="bg-light text-dark"
-                  value={variant}
-                  onChange={(e) => setVariant(e.target.value)}
+                  value={varient}
+                  onChange={(e) => setVarient(e.target.value)}
                 >
-                  {pizza.varients.map((variant) => {
-                    return <option>{variant}</option>;
+                  {pizza.varients.map((varient) => {
+                    return <option>{varient}</option>;
                   })}
                 </select>
               </Col>
@@ -50,9 +57,9 @@ const PizzaCard = ({ pizza }) => {
             </Row>
           </Card.Text>
           <Row>
-            <Col md={6}>Price : RS {pizza.prices[0][variant] * quantity}/-</Col>
+            <Col md={6}>Price : RS {pizza.prices[0][varient] * quantity}/-</Col>
             <Col md={6}>
-              <Button className="bg-warning text-white">Add to Cart</Button>
+              <Button onClick={addToCartHandler} className="bg-warning text-white">Add to Cart</Button>
             </Col>
           </Row>
         </Card.Body>
