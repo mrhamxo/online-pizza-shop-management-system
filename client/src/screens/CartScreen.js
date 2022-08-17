@@ -1,8 +1,9 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { cartAction, deleteFromCart } from "../actions/cartAction";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
+import Checkout from "../components/Checkout";
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const CartScreen = () => {
   // two different methods to get the cart items
   const cartItems = cartState.cartItems; //option 1
   // const { cartItems } = cartState; //option 2
-  const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
+  const subTotal = cartItems.reduce((x, item) => x + item.prices[0][item.varient] * item.quantity, 0);
 
   return (
     <div>
@@ -79,7 +80,7 @@ const CartScreen = () => {
             <h1>Total Payments</h1>
             <h4>Sub Total</h4>
             <h4>RS: {subTotal} /-</h4>
-            <Button variant="primary">Checkout</Button>
+            <Checkout subTotal={subTotal} />
           </Col>
         </Row>
       </Container>
