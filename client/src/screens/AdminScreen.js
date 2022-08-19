@@ -11,12 +11,12 @@ const AdminScreen = () => {
   const userState = useSelector(state => state.loginUserReducer);
   const {currentUser} = userState;
 
-    // useEffect(() => {
-    //   if (localStorage.getItem("currentUser") === null || currentUser.isAdmin) {
-    //     // navigate("/login");
-    //     window.location.href = "/";
-    //   }
-    // }, [currentUser]);
+    useEffect(() => {
+      if (localStorage.getItem("currentUser") === null || currentUser.isAdmin) {
+        // navigate("/login");
+        window.location.href = "/";
+      }
+    }, [currentUser]);
 
   const navigate = useNavigate();
   return (
