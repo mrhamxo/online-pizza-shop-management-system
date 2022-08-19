@@ -30,14 +30,11 @@ const NavBar = () => {
                 <LinkContainer to="/">
                   {/* <Nav.Link>{currentUser.name}</Nav.Link> */}
                   <NavDropdown title={currentUser.name} id="basic-nav-dropdown">
-                    <NavDropdown.Item href="#action/3.1">
-                      Action
-                    </NavDropdown.Item>
+                    <LinkContainer to="/orders">
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
                     <NavDropdown.Item href="#action/3.2">
                       Another action
-                    </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">
-                      Something
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item

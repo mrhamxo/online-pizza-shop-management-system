@@ -3,8 +3,8 @@ import axios from "axios";
 export const registerUser = (user) => async (dispatch) => {
   dispatch({ type: "REGISTER_USER_REQUEST" });
   try {
-    const response = await axios.post("/api/users/register", user);
-    dispatch({ type: "REGISTER_USER_SUCCESS", payload: response.data });
+    await axios.post("/api/users/register", user);
+    dispatch({ type: "REGISTER_USER_SUCCESS" });
   } catch (error) {
     dispatch({ type: "REGISTER_USER_FAILURE", payload: error });
   }
@@ -24,7 +24,6 @@ export const loginUser = (user) => async (dispatch) => {
 };
 
 export const logoutUser = () => (dispatch) => {
-  // dispatch({ type: "LOGIN_USER_REQUEST" });
   localStorage.removeItem("currentUser");
   window.location.href = '/login';
 };

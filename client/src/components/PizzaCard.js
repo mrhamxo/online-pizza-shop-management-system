@@ -6,13 +6,12 @@ import { cartAction } from "../actions/cartAction";
 const PizzaCard = ({ pizza }) => {
   const [varient, setVarient] = useState("small");
   const [quantity, setQuantity] = useState(1);
+  const [show, setShow] = useState(false);
 
   const dispatch = useDispatch();
   const addToCartHandler = () => {
     dispatch(cartAction(pizza, quantity, varient));
   };
-
-  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -38,7 +37,7 @@ const PizzaCard = ({ pizza }) => {
                   onChange={(e) => setVarient(e.target.value)}
                 >
                   {pizza.varients.map((varient) => {
-                    return <option>{varient}</option>;
+                    return <option key={varient}>{varient}</option>;
                   })}
                 </select>
               </Col>
@@ -50,7 +49,11 @@ const PizzaCard = ({ pizza }) => {
                   onChange={(e) => setQuantity(e.target.value)}
                 >
                   {[...Array(10).keys()].map((value, index) => {
-                    return <option>{index + 1}</option>;
+                    return (
+                      <option key={index + 1} value={index + 1}>
+                        {index + 1}
+                      </option>
+                    );
                   })}
                 </select>
               </Col>
@@ -59,7 +62,12 @@ const PizzaCard = ({ pizza }) => {
           <Row>
             <Col md={6}>Price : RS {pizza.prices[0][varient] * quantity}/-</Col>
             <Col md={6}>
-              <Button onClick={addToCartHandler} className="bg-warning text-white">Add to Cart</Button>
+              <Button
+                onClick={addToCartHandler}
+                className="bg-warning text-white"
+              >
+                Add to Cart
+              </Button>
             </Col>
           </Row>
         </Card.Body>
@@ -71,15 +79,19 @@ const PizzaCard = ({ pizza }) => {
           <Modal.Title>{pizza.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Card.Img
-            variant="top"
-            src={pizza.image}
-            style={{ height: "250px", cursor: "pointer" }}
-            onClick={handleShow}
-          />
-          <h6 className="mt-3">Description:</h6>
-          <hr />
-          <p>{pizza.description}</p>
+          <div>
+            <Card.Img
+              variant="top"
+              src={pizza.image}
+              style={{ height: "250px", cursor: "pointer" }}
+              onClick={handleShow}
+            />
+          </div>
+          <div>
+            <h6 className="mt-3">Description:</h6>
+            <hr />
+            <p>{pizza.description}</p>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

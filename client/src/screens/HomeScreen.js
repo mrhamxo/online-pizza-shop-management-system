@@ -25,7 +25,7 @@ const HomeScreen = () => {
           <Row>
             {pizzas.map((pizza) => {
               return (
-                <Col md={4}>
+                <Col md={4} key={pizza.name}>
                   <PizzaCard pizza={pizza} />
                 </Col>
               );

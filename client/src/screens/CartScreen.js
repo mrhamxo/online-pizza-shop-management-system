@@ -6,12 +6,12 @@ import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
 import Checkout from "../components/Checkout";
 
 const CartScreen = () => {
-  const dispatch = useDispatch();
   const cartState = useSelector((state) => state.cartReducer);
   // two different methods to get the cart items
   const cartItems = cartState.cartItems; //option 1
   // const { cartItems } = cartState; //option 2
-  const subTotal = cartItems.reduce((x, item) => x + item.prices[0][item.varient] * item.quantity, 0);
+  const dispatch = useDispatch();
+  const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
 
   return (
     <div>
@@ -28,7 +28,7 @@ const CartScreen = () => {
                     </h4>
                     <h6>
                       Price: {item.quantity} X {item.prices[0][item.varient]} ={" "}
-                      {item.prices[0][item.varient] * item.quantity}
+                      {item.price}
                     </h6>
                     <h4>
                       Quantity: &nbsp;

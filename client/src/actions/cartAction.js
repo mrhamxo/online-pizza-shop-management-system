@@ -7,7 +7,7 @@ export const cartAction =
       varient: varient,
       quantity: Number(quantity),
       prices: pizza.prices,
-      price: pizza.prices[0][quantity] * varient,
+      price: pizza.prices[0][varient] * quantity,
     };
     if (cartItem.quantity > 10) {
       alert("Maximum quantity is 10");

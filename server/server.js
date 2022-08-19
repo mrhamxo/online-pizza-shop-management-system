@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 // Route handlers
 app.use("/api/pizzas", require("./routes/pizzaRoute"));
 app.use("/api/users", require("./routes/userRoutes"));
-app.use("/api/users", require("./routes/orderRoute"));
+app.use("/api/orders", require("./routes/orderRoute"));
 
 app.get("/", (req, res) => {
   res.send("Hello World from node server");
