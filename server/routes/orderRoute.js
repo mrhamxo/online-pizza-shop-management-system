@@ -64,4 +64,29 @@ router.post("/getuserorder", async (req, res) => {
   }
 });
 
+router.get("/getalluserorder", async (req, res) => {
+  try {
+    const orders = await orderSchema.find({});
+    res.status(200).send(orders);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Something went wrong", error: error.stack });
+  }
+});
+
+router.get("/deliverorder", async (req, res) => {
+  const orderid = req.body.orderid;
+  try {
+    const order = await orderSchema.findOne({_id: orderid});
+    order.isDeliverd = true;
+    await order.save();
+    res.status(200).send("Order Deliverd Success");
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Something went wrong", error: error.stack });
+  }
+});
+
 module.exports = router;

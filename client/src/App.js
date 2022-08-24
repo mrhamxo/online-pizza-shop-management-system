@@ -31,7 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<CartScreen />} />
         <Route path="/orders" element={<OrderScreen />} />
-        <Route path="/admin" element={<AdminScreen />} >
+        <Route path="/admin/*" element={<AdminScreen />} >
           <Route path="userlist" element={<UserList />} />
           <Route path="pizzaslist" element={<PizzasList />} />
           <Route path="addnewpizza" element={<AddNewPizza />} />

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { Table } from "react-bootstrap";
-import { getAllPizzas } from "../../actions/pizzaAction";
+import { getAllPizzas, deletePizzaAction } from "../../actions/pizzaAction";
 // import PizzaCard from "../PizzaCard";
 import Loading from "../Loading";
 import Error from "../Error";
@@ -59,7 +59,11 @@ const PizzasList = () => {
                       {" "}
                       <AiFillEdit style={{ cursor: "pointer" }} />
                     </Link>
-                    &nbsp; <AiFillDelete />
+                    &nbsp;{" "}
+                    <AiFillDelete
+                      style={{ color: "red", cursor: "pointer" }}
+                      onClick={() => {dispatch(deletePizzaAction(pizza._id))}}
+                    />
                   </td>
                 </tr>
               ))}
@@ -70,5 +74,5 @@ const PizzasList = () => {
     </>
   );
 };
-
+// dispatch(deletePizza(pizza._id))
 export default PizzasList;

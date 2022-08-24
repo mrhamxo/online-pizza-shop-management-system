@@ -10,7 +10,7 @@ const AddNewPizza = () => {
   const [name, setName] = useState("");
   const [smallPrice, setSmallPrice] = useState();
   const [mediumPrice, setMediumPrice] = useState();
-  const [largPrice, setlargPrice] = useState();
+  const [largePrice, setLargePrice] = useState();
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -29,7 +29,7 @@ const AddNewPizza = () => {
       prices: {
         small: smallPrice,
         medium: mediumPrice,
-        large: largPrice,
+        large: largePrice,
       },
     };
     dispatch(addPizzaAction(pizza));
@@ -75,8 +75,8 @@ const AddNewPizza = () => {
               <Form.Label>Larg Price</Form.Label>
               <Form.Control
                 type="text"
-                value={largPrice}
-                onChange={(e) => setlargPrice(e.target.value)}
+                value={largePrice}
+                onChange={(e) => setLargePrice(e.target.value)}
                 placeholder="Enter larg price"
               />
             </Form.Group>

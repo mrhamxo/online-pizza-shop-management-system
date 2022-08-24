@@ -39,10 +39,35 @@ router.post("/getpizzabyid", async (req, res) => {
 
   try {
     const pizza = await pizzaModel.findOne({_id: pizzaId});
-    res.send(pizza);
+    res.status(200).send(pizza);
   } catch (error) {
     res.json({ message: error });
   }
 });
 
+router.post("/updatepizza", async (req, res) => {
+  const updatedPizza = req.body.updatedPizza;
+  try {
+    const pizza = await pizzaModel.findOne({ _id: updatedPizza._id });
+    (pizza.name = updatedPizza.name),
+      (pizza.description = updatedPizza.description),
+      (pizza.image = updatedPizza.image),
+      (pizza.category = updatedPizza.category),
+      (pizza.prices = [updatedPizza.prices]);
+    await pizza.save();
+    res.status(200).send("Pizza Update Success");
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+});
+
+router.post("/deletepizza", async (req, res) => {
+  const pizzaId = req.body.pizzaId;
+  try {
+    await pizzaModel.findOneAndDelete({ _id: pizzaId });
+    res.status(200).send("Pizza Deleted");
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
+});
 module.exports = router;

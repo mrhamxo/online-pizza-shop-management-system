@@ -44,4 +44,26 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// get All users for admin panel || GET REQUEST
+router.get("/getallusers", async (req, res) => {
+  try {
+    const users = await userModel.find({});
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(404).json({ message: error.stack });
+  }
+});
+
+// Delete user for admin panel || POST REQUEST
+router.post("/deleteuser", async (req, res) => {
+  const userid = req.body.userid;
+
+  try {
+    await userModel.findOneAndDelete({_id: userid});
+    res.status(200).send("User Deleted successfully");
+  } catch (error) {
+    res.status(404).json({ message: error.stack });
+  }
+});
+
 module.exports = router;

@@ -20,14 +20,15 @@ const orderSchema = mongoose.Schema(
     orderAmount: {
       type: String,
     },
-    isDelivered: {
-      type: String,
+    isDeliverd: {
+      type: Boolean,
+      default: false,
     },
     transactionId: {
       type: String,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("Order", orderSchema);
