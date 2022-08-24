@@ -23,9 +23,9 @@ const HomeScreen = () => {
           <Error error="Something went wrong" />
         ) : (
           <Row>
-            {pizzas.map((pizza) => {
+            {pizzas.map((pizza, index) => {
               return (
-                <Col md={4} key={pizza.name}>
+                <Col md={4} key={index}>
                   <PizzaCard pizza={pizza} />
                 </Col>
               );

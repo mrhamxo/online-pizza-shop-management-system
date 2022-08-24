@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import About from "./components/About";
 import AddNewPizza from "./components/Admin/AddNewPizza";
+import EditPizza from "./components/Admin/EditPizza";
 import OrderList from "./components/Admin/OrderList";
 import PizzasList from "./components/Admin/PizzasList";
 import UserList from "./components/Admin/UserList";
@@ -35,6 +36,9 @@ function App() {
           <Route path="pizzaslist" element={<PizzasList />} />
           <Route path="addnewpizza" element={<AddNewPizza />} />
           <Route path="orderlist" element={<OrderList />} />
+          <Route path="editpizza" element={<EditPizza />}>
+            <Route path=":pizzaId" element={<EditPizza />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

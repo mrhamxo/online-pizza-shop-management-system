@@ -19,3 +19,49 @@ export const getAllPizzaReducer = (state = { pizzas: [] }, action) => {
       return state;
   }
 };
+
+// addpizzaReducer for admin penal
+export const addPizzaReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_PIZZAS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "ADD_PIZZAS_SUCCESS":
+      return {
+        success: true,
+        loading: false,
+      };
+    case "ADD_PIZZAS_FAILURE":
+      return {
+        error: action.payload,
+        loading: false,
+      };
+    default:
+      return state;
+  }
+};
+
+// getpizzabyidReducer for admin penal
+export const getPizzaByIdReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_PIZZABYID_REQUEST":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "GET_PIZZABYID_SUCCESS":
+      return {
+        pizza: action.payload,
+        loading: false,
+      };
+    case "GET_PIZZABYID_FAILURE":
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
