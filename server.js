@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/databaseConnection");
 require("colors");
 const morgan = require("morgan");
+const path = require("path");
 
 const app = express();
 
@@ -21,9 +22,17 @@ app.use("/api/pizzas", require("./routes/pizzaRoute"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/orders", require("./routes/orderRoute"));
 
-app.get("/", (req, res) => {
-  res.send("Hello World from node server");
-});
+// For Production
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Hello World from node server");
+  });
+}
 
 // start server
 const port = process.env.PORT;
