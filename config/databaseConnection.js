@@ -8,11 +8,11 @@ const connectDB = async () => {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
-    // console.log(
-    //   `MongoDB Connection successfully: ${connectiondb.connection.host}`.bgGreen.black
-    // );
+    console.log(
+      `MongoDB Connection successfully: ${connectiondb.connection.host}`.bgGreen.black
+    );
   } catch (error) {
-    // console.log(`error: ${error.message}`.bgRed.white);
+    console.log(`error: ${error.message}`.bgRed.white);
   }
 };
 module.exports = connectDB;
