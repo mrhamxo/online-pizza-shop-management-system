@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
   updatePizzaByIdReducer: updatePizzaByIdReducer,
 });
 
-const initialState = {
+const initialState = { 
   cartReducer: {
     cartItems: cartItems,
   },

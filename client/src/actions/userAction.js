@@ -34,7 +34,7 @@ export const getAllUsersAction = () => async (dispatch) => {
 
   try {
     const res = await axios.get("/api/users/getallusers");
-    console.log(res);
+    // console.log(res);
     dispatch({ type: "GET_USERS_SUCCESS", payload: res.data });
   } catch (error) {
     dispatch({ type: "GET_USERS_FAILURE", payload: error });

@@ -20,8 +20,8 @@ const CartScreen = () => {
           <Col md={6}>
             <h1>My Cart</h1>
             <Row>
-              {cartItems.map((item) => (
-                <>
+              {cartItems.map((item, index) => (
+                <div key={index}>
                   <Col md={7}>
                     <h4>
                       {item.name} [{item.varient}]
@@ -71,9 +71,8 @@ const CartScreen = () => {
                     />
                   </Col>
                   <hr />
-                </>
+                </div>
               ))}
-              ;
             </Row>
           </Col>
           <Col md={4}>

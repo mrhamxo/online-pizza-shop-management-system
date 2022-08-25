@@ -51,8 +51,8 @@ export const deliverOrderAction = (orderid) => async (dispatch, getState) => {
   // const currentUser = getState().loginUserReducer.currentUser;
   dispatch({ type: "GET_ALL_ORDER_REQUEST" });
   try {
-    const response = await axios.get("/api/orders/getalluserorder", {orderid});
-    console.log(response);
+    await axios.get("/api/orders/getalluserorder", {orderid});
+    // console.log(response);
     alert("Order Deliver Success")
     const orders = await axios.get("/api/orders/getalluserorder");
     dispatch({ type: "GET_ALL_ORDER_SUCCESS", payload: orders.data });

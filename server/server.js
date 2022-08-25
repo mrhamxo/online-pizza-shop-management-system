@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
 // start server
 const port = process.env.PORT;
 app.listen(port, () => {
-  console.log(
-    `Server running on ${process.env.NODE_ENV} mode on port on ${process.env.PORT}`
-      .bgMagenta.white
-  );
+  // console.log(
+  //   `Server running on ${process.env.NODE_ENV} mode on port on ${process.env.PORT}`
+  //     .bgMagenta.white
+  // );
 });

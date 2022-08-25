@@ -17,10 +17,10 @@ const importData = (async () => {
             return {...pizza};
         });
         await Pizza.insertMany(SampleData);
-        console.log('Data imported successfully'.bgGreen.green.bold);
+        // console.log('Data imported successfully'.bgGreen.green.bold);
         process.exit();
     } catch (error) {
-        console.log(`error: ${error}`.bgRed.red.bold);
+        // console.log(`error: ${error}`.bgRed.red.bold);
         process.exit(1);
     }
 });

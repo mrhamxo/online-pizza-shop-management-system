@@ -44,7 +44,7 @@ const OrderList = () => {
                 <td>{order.createdAt}</td>
                 <td>
                   {order.isDeliverd ? (
-                    <h5 className="text-success">Deliverd</h5>
+                    <h5 className="text-success">Delivered</h5>
                   ) : (
                     <>
                       <Button

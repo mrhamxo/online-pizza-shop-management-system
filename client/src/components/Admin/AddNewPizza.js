@@ -72,19 +72,19 @@ const AddNewPizza = () => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPrice">
-              <Form.Label>Larg Price</Form.Label>
+              <Form.Label>Large Price</Form.Label>
               <Form.Control
                 type="text"
                 value={largePrice}
                 onChange={(e) => setLargePrice(e.target.value)}
-                placeholder="Enter larg price"
+                placeholder="Enter large price"
               />
             </Form.Group>
           </Row>
           <Form.Group as={Col} controlId="formGridImage">
             <Form.Label>Image</Form.Label>
             <Form.Control
-              ttype="text"
+              type="text"
               value={image}
               onChange={(e) => setImage(e.target.value)}
               placeholder="Add Image URL"

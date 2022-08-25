@@ -1,12 +1,12 @@
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
 export const getAllPizzas = () => async (dispatch) => {
   dispatch({ type: "GET_PIZZAS_REQUEST" });
 
   try {
     const res = await axios.get("/api/pizzas/getallpizzas");
-    console.log(res);
+    // console.log(res);
     dispatch({ type: "GET_PIZZAS_SUCCESS", payload: res.data });
   } catch (error) {
     dispatch({ type: "GET_PIZZAS_FAILURE", payload: error });
@@ -17,8 +17,8 @@ export const getAllPizzas = () => async (dispatch) => {
 export const addPizzaAction = (pizza) => async (dispatch) => {
   dispatch({ type: "ADD_PIZZAS_REQUEST" });
   try {
-    await axios.post("/api/pizzas/addpizza", {pizza});
-    dispatch({ type: "ADD_PIZZAS_SUCCESS"});
+    await axios.post("/api/pizzas/addpizza", { pizza });
+    dispatch({ type: "ADD_PIZZAS_SUCCESS" });
   } catch (error) {
     dispatch({ type: "ADD_PIZZAS_FAILURE", payload: error });
   }
@@ -28,8 +28,8 @@ export const addPizzaAction = (pizza) => async (dispatch) => {
 export const getPizzaByIdAction = (pizzaId) => async (dispatch) => {
   dispatch({ type: "GET_PIZZABYID_REQUEST" });
   try {
-    const response = await axios.post("/api/pizzas/getpizzabyid", {pizzaId});
-    dispatch({ type: "GET_PIZZABYID_SUCCESS", payload:response.data });
+    const response = await axios.post("/api/pizzas/getpizzabyid", { pizzaId });
+    dispatch({ type: "GET_PIZZABYID_SUCCESS", payload: response.data });
   } catch (error) {
     dispatch({ type: "GET_PIZZABYID_FAILURE", payload: error });
   }
@@ -51,10 +51,29 @@ export const updatePizzaAction = (updatedPizza) => async (dispatch) => {
 export const deletePizzaAction = (pizzaId) => async (dispatch) => {
   try {
     await axios.post("/api/pizzas/deletepizza", { pizzaId });
-    swal("Pizza Deleted Succss!", "success");
+    swal("Pizza Deleted Success!", "success");
     window.location.reload();
     // console.log(res);
   } catch (error) {
-    swal("Errro While Deleteing Pizza");
+    swal("Error While Deleting Pizza");
+  }
+};
+
+export const filterPizzaAction = (searchKey, category) => async (dispatch) => {
+  let filteredPizza;
+  dispatch({ type: "GET_PIZZAS_REQUEST" });
+  try {
+    const response = await axios.get("/api/pizzas/getallpizzas");
+    filteredPizza = response.data.filter((pizza) =>
+      pizza.name.toLowerCase().includes(searchKey)
+    );
+    if (category !== "all") {
+      filteredPizza = response.data.filter(
+        (pizza) => pizza.category.toLowerCase() === category
+      );
+    }
+    dispatch({ type: "GET_PIZZAS_SUCCESS", payload: filteredPizza });
+  } catch (error) {
+    dispatch({ type: "GET_PIZZAS_FAILURE", payload: error });
   }
 };

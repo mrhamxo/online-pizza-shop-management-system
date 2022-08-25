@@ -5,6 +5,7 @@ import { getAllPizzas } from "../actions/pizzaAction";
 import PizzaCard from "../components/PizzaCard";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
+import Filters from "../components/Filters";
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const HomeScreen = () => {
           <Error error="Something went wrong" />
         ) : (
           <Row>
+            <Filters />
             {pizzas.map((pizza, index) => {
               return (
                 <Col md={4} key={index}>

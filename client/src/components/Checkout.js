@@ -15,7 +15,7 @@ const Checkout = ({ subTotal }) => {
 
   const tokenHandler = (token) => {
     dispatch(placeOrderAction(token, subTotal));
-    console.log(token);
+    // console.log(token);
   };
 
   return (
